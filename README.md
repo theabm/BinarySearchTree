@@ -4,12 +4,6 @@ This repository consists of the implementation of a **template** binary search t
 A BST is a hierarchical (ordered) data structure where each **node** can have at most two children, namely, **left** and **right** child. Each node stores a **pair** of a **key** and the associated **value**. The binary tree is ordered according to the keys. 
 If we assume that we sort the keys in ascending order (i.e., we use the less than `<` operator), then given a node `N`, all the nodes having keys **smaller** than the key of the node `N` are on the **left**. All the nodes with a key **greater** than the key of the node `N` are on the **right**.
 
-### Implementation Specifics
-
-From the implementation point of view, the BST is templated on the `KT` the key type, `VT` the value type, and `F` the type of the comparison operator which by default is set to `std::less<Key Type>`.
-The BST relies on the _node class which implements the concept of node. A node has has two `std::unique_ptr`: `left` and `right` pointing to the left and right child, respectively. The pointers point to `nullptr` if they have no children. Furthermore, a node also has a raw pointer pointing to the parent of the node. Keys and values are stored using `std::pair<const KT,VT>`.
-Lastly, the iterator for the BST was implemented in the _iterator class. 
-
 ### How to compile
 
 The repository contains a Makefile, therefore the program can be compiled with the `make` command. However, the specific command line arguments used are as follows:
@@ -22,6 +16,12 @@ To create excutable:
 
 To run:
 `./main.x`
+
+### Implementation Specifics
+
+From the implementation point of view, the BST is templated on the `KT` the key type, `VT` the value type, and `F` the type of the comparison operator which by default is set to `std::less<Key Type>`.
+The BST relies on the node class found in `node.h`. A node has has two `std::unique_ptr`: `left` and `right` pointing to the left and right child, respectively. The pointers point to `nullptr` if they have no children. Furthermore, a node also has a raw pointer pointing to the parent of the node. Keys and values are stored using `std::pair<const KT,VT>`.
+Lastly, the iterator for the BST was implemented in `iterator.h`. 
 
 ### Supported functions:
 ##### Insert
