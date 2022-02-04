@@ -33,7 +33,7 @@ class _iterator{
    * @param ptr Pointer to type T from which we want to create an iterator. 
    */
   explicit _iterator(T* ptr) noexcept: current{ptr} {}
-
+  
   /**
    * @brief Overload of operator*(). 
    * 
