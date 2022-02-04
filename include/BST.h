@@ -93,7 +93,7 @@ class BST{
      * @param key The key we want to find BST. 
      * @return VT& Reference to value type. 
      */
-    template <typename OT> VT& _sub(OT&& key) noexcept { 
+    template <typename OT> VT& _sub(OT&& key){ 
         auto iteratorboolpair = insert(PairType{std::forward<OT>(key),{}});
         return iteratorboolpair.first->second;
     }
@@ -300,7 +300,7 @@ class BST{
      * @param start start of vector from where median should be calculated.
      * @param end end of vector from where median should be calculated. 
      */
-    void _insert_medians(const std::vector<PairType>& vector_of_pairs, const int start, const int end) noexcept{
+    void _insert_medians(const std::vector<PairType>& vector_of_pairs, const int start, const int end){
         if(start > end){
             return;
         }
@@ -329,7 +329,7 @@ class BST{
     }
 
     /**
-     * @brief clears the tree.
+     * @brief Clears the tree.
      * 
      */
     void clear() noexcept{
@@ -344,7 +344,7 @@ class BST{
      * @param key
      * @return iterator
      */
-    iterator find(const KT& key) noexcept {return iterator{_find(key)}; }
+    auto find(const KT& key) noexcept {return iterator{_find(key)}; }
     //iterator find(KT&& x) noexcept{ return iterator{_find(std::move(x))}; }
 
     // dont need to implement both versions for r value and l value since an r value is coherent with a const
@@ -355,7 +355,7 @@ class BST{
      * @param key
      * @return const_iterator 
      */
-    const_iterator find(const KT& key) const noexcept{ return const_iterator{_find(key)}; } 
+    auto find(const KT& key) const noexcept{ return const_iterator{_find(key)}; } 
     //const_iterator find(KT&& x) const noexcept{return const_iterator{_find(std::move(x))}; }
 
     /**
@@ -365,7 +365,7 @@ class BST{
      * @param key L-value reference to key to be subscripted
      * @return VT& reference to value type.
      */
-    VT& operator[](const KT& key) noexcept{ return _sub(key); }
+    VT& operator[](const KT& key) { return _sub(key); }
     /**
      * @brief Subscripting operator. Returns a reference to the value type of the node if the
      * key exists in the tree and inserts the key if it doesn't.
@@ -373,7 +373,7 @@ class BST{
      * @param key R-value reference to key to be subscripted.
      * @return VT& reference to value type.
      */
-    VT& operator[](KT&& key) noexcept{ return _sub(std::move(key)); }
+    VT& operator[](KT&& key) { return _sub(std::move(key)); }
     
     /**
      * @brief Returns iterator to the beginning of the BST. 
@@ -468,7 +468,7 @@ class BST{
      * @param bst2 Reference to BST object.
      * @return BST& Rerference to BST object.
      */
-    BST& operator=(BST& bst2 ) noexcept{
+    BST& operator=(BST& bst2 ) {
         head.reset(); // reset the head
         auto tmp = bst2; //copy ctor 
         *this = std::move(tmp); //move assignment
@@ -499,7 +499,7 @@ class BST{
      * (i.e., the key was already present in the tree). 
      * type std::pair<iterator,bool>
      */
-    IteratorBoolPair insert(const PairType& pair)noexcept{ return _insert(pair); }
+    IteratorBoolPair insert(const PairType& pair) { return _insert(pair); }
     /**
      * @brief Insert a l-value of <key,value> pair in the BST.
      * 
@@ -509,13 +509,13 @@ class BST{
      * (i.e., the key was already present in the tree). 
      * type std::pair<iterator,bool>
      */
-    IteratorBoolPair insert(PairType&& pair)noexcept{ return _insert(std::move(pair));}
+    IteratorBoolPair insert(PairType&& pair) { return _insert(std::move(pair));}
     /**
      * @brief Erase a key from the BST.
      * 
      * @param key L-value reference to key to be erased.
      */
-    void erase(const KT&key)noexcept{ return _erase(key); }
+    void erase(const KT&key) noexcept { return _erase(key); }
     // /**
     // * @brief Erase a key from the BST.
     // * 
@@ -529,7 +529,7 @@ class BST{
      * inserting the medians of the vector into the BST.
      * 
      */
-    void balance()noexcept{
+    void balance() {
         std::vector<PairType> v;
         v.reserve(_size);
         for(const auto& x: *this){
