@@ -4,8 +4,6 @@
 #include <iterator>
 #include <memory>
 #include <utility>
-template <typename T> T* next(T*) noexcept;
-
 /**
  * @brief Iterator class templated on Type T and Value Type O.
  * 
@@ -103,16 +101,14 @@ class _iterator{
     os << "[" << x.current << "]"<< std::endl;
     return os;
   }
-};
 
-template<typename T>
-/**
- * @brief Helper function to find a nodes successor.
- * 
- * @param _node Pointer to node.
- * @return node* Pointer to the successor node.
- */
-T* next(T* _node) noexcept{
+  /**
+  * @brief Helper function to find a nodes successor.
+  * 
+  * @param _node Pointer to node.
+  * @return node* Pointer to the successor node.
+  */
+  static T* next(T* _node) noexcept{
     // if current is nullptr return again nullptr.
     if(!_node){
       return nullptr;
@@ -142,6 +138,8 @@ T* next(T* _node) noexcept{
         _node = _node->parent;
         }
     return _node;
-}
+  }
+
+};
 
 #endif

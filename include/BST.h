@@ -268,7 +268,7 @@ class BST{
         }
         else if(_node->left && _node->right){
             auto _node_pred = _node;
-            _node = next(_node); //successor can have either no children (leaf) or only right child.
+            _node = iterator::next(_node); //successor can have either no children (leaf) or only right child.
 
             if(!_node->right.get()){
                 //successor has no children and is leaf node
