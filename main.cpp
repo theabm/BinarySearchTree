@@ -27,21 +27,21 @@ int main(){
     // Testing insert and emplace
     std::cout<<"\nInserting pairs into BST...\n\n";
     std::cout<<"Inserting L-value of std::pair<const int, int>. I expect L-value ctor to be called:\n";
-    auto tmp = bst.insert(a);
+    bst.insert(a);
     std::cout<<"\n";
     std::cout<<"Inserting R-value of std::pair<const int, int>. I expect R-value ctor to be called.\n";
-    tmp = bst.insert({3,4});
+    bst.insert({3,4});
     std::cout<<"\n";
     std::cout<<"Emplacing value into BST.\n";
-    tmp = bst.emplace(10,55);
-    tmp = bst.emplace(d);
+    bst.emplace(10,55);
+    bst.emplace(d);
     std::cout<<"\n";
     std::cout<<"Inserting other values...\n";
-    tmp = bst.insert(e); 
-    tmp = bst.insert(j);
-    tmp = bst.insert(f);
-    tmp = bst.insert(g);
-    tmp = bst.insert(h);
+    bst.insert(e); 
+    bst.insert(j);
+    bst.insert(f);
+    bst.insert(g);
+    bst.insert(h);
     std::cout<<"\n\n"<<std::endl;
 
     // testing range-for loop and put-to operator
@@ -103,13 +103,13 @@ int main(){
     {
     std::cout<<"bst[3]= "<<bst[3]<<"\n";
     std::cout<<"bst[9]= "<<bst[9]<<"\n";
-    auto tmpint = 10;
-    std::cout<<"bst[10]= "<<bst[tmpint]<<"\n";
+    std::cout<<"bst[10]= "<<bst[10]<<"\n";
     }
     std::cout<<std::endl;
 
     // testing copy semantics
     std::cout<<"Copying the tree with copy ctor:\n"<<std::endl;
+    
     {
     BST bst2{bst};
 
