@@ -31,22 +31,19 @@ class _iterator{
    * @param ptr Pointer to type T from which we want to create an iterator. 
    */
   explicit _iterator(T* ptr) noexcept: current{ptr} {}
-  
+
   /**
-   * @brief Overload of operator*(). 
+   * @brief Overload of operator*().
    * 
    * @return reference
    */
-  reference operator*() const noexcept{
-    return current->pair;
-   }
-
+  reference operator*() noexcept { return current->pair;}
   /**
    * @brief Overload of operator->().
    * 
    * @return pointer 
    */
-  pointer operator->() const noexcept { return &**this; }
+  pointer operator->() noexcept { return &**this; }
 
   // post-increment
   /**
@@ -103,7 +100,8 @@ class _iterator{
   }
 
   /**
-  * @brief Helper function to find a nodes successor.
+  * @brief Helper function to find the successor of a node. It is called in the implementation
+  * of operator++().
   * 
   * @param _node Pointer to node.
   * @return node* Pointer to the successor node.
