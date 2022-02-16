@@ -408,10 +408,7 @@ class BST{
      * @return const_iterator
      */
     auto cbegin() const noexcept{
-        auto tmp = head.get();
-        while(tmp-> left)
-            tmp = tmp->left.get();
-        return const_iterator{tmp};
+        return const_iterator{_leftmost_node()};
     }
     /**
      * @brief Returns iterator to end of BST. 
