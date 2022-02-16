@@ -437,7 +437,7 @@ class BST{
      * @brief Construct a new BST object. Default constructor.
      * 
      */
-    BST() = default;
+    BST() noexcept = default;
     /**
      * @brief Construct a new BST object.
      * 
@@ -481,14 +481,14 @@ class BST{
      * @brief Default move constructor of BST.
      * 
      */
-    BST(BST &&) = default;
+    BST(BST &&) noexcept = default;
 
     /**
      * @brief Default move assignment of BST.
      * 
      * @return Reference to BST object.
      */
-    BST& operator=(BST &&) = default;
+    BST& operator=(BST &&) noexcept = default;
 
     /**
      * @brief Insert a <key,value> pair in the BST.
