@@ -469,7 +469,6 @@ class BST{
      * @return BST& Rerference to BST object.
      */
     BST& operator=(BST& bst2 ) {
-        head.reset(); // reset the head
         auto tmp = bst2; //copy ctor 
         *this = std::move(tmp); //move assignment
         return *this;
