@@ -311,6 +311,17 @@ class BST{
         _insert_medians(vector_of_pairs, start, mid-1);
         _insert_medians(vector_of_pairs, mid+1, end);
     }
+    /**
+     * @brief Helper function to get the leftmost node of the BST.
+     * 
+     * @return pointer to node.
+     */
+    auto _leftmost_node() const noexcept {
+        auto tmp = head.get();
+        while (tmp->left)
+            tmp = tmp->left.get();
+        return tmp;
+    }
 
     public:
 
@@ -381,10 +392,7 @@ class BST{
      * @return iterator
      */
     auto begin() noexcept{ 
-        auto tmp = head.get();
-        while (tmp->left)
-            tmp = tmp->left.get();
-        return iterator{tmp};
+        return iterator{_leftmost_node()};
     }
     /**
      * @brief Returns constant iterator to the beginning of the BST.  
@@ -392,10 +400,7 @@ class BST{
      * @return const_iterator
      */
     auto begin() const noexcept { 
-        auto tmp = head.get();
-        while(tmp-> left)
-            tmp = tmp->left.get();
-        return const_iterator{tmp};
+        return const_iterator{_leftmost_node()};
     }
     /**
      * @brief Returns constant iterator to the beginning of the BST.  
