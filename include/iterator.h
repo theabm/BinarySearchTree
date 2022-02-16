@@ -43,13 +43,13 @@ class _iterator{
    * 
    * @return reference
    */
-  reference operator*() noexcept { return current->pair;}
+  reference operator*() const noexcept { return current->pair;}
   /**
    * @brief Overload of operator->().
    * 
    * @return pointer 
    */
-  pointer operator->() noexcept { return &**this; }
+  pointer operator->() const noexcept { return &**this; }
 
   // pre-increment
   /**
