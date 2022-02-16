@@ -33,6 +33,12 @@ class _iterator{
   explicit _iterator(T* ptr) noexcept: current{ptr} {}
 
   /**
+   * @brief Destroy the iterator object
+   * 
+   */
+  ~_iterator() noexcept = default;
+
+  /**
    * @brief Overload of operator*().
    * 
    * @return reference
@@ -45,7 +51,7 @@ class _iterator{
    */
   pointer operator->() noexcept { return &**this; }
 
-  // post-increment
+  // pre-increment
   /**
    * @brief Overload pre increment operator++().
    * 
@@ -54,6 +60,18 @@ class _iterator{
   _iterator &operator++() noexcept {
      current = next(current);
      return *this;
+    }
+
+  // post-increment
+  /**
+   * @brief Overload post increment operator++().
+   * 
+   * @return _iterator& 
+   */
+  _iterator operator++(int) noexcept {
+     auto tmp = *this;
+     ++(*this);
+     return tmp;
     }
 
   /**
