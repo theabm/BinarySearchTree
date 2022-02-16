@@ -94,8 +94,7 @@ class BST{
      * @return VT& Reference to value type. 
      */
     template <typename OT> VT& _sub(OT&& key){ 
-        auto iteratorboolpair = insert(PairType{std::forward<OT>(key),{}});
-        return iteratorboolpair.first->second;
+        return insert(PairType{std::forward<OT>(key),{}}).first->second;
     }
     /**
      * @brief Helper function to implement find() and cfind().
@@ -335,7 +334,7 @@ class BST{
      * (i.e., the key was already present in the tree). 
      */
     template <typename ... Types> // packing the types
-    IteratorBoolPair emplace(Types&& ... args) noexcept { //packing the arguments
+    IteratorBoolPair emplace(Types&& ... args) { //packing the arguments
         return insert(PairType{std::forward<Types>(args)...}); //unpack
     }
 
