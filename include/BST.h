@@ -458,7 +458,7 @@ class BST{
      * 
      * @param bst2 Reference to BST object.
      */
-    BST(const BST &bst2): _size{bst2._size} {
+    BST(const BST &bst2): f{bst2.f}, _size{bst2._size}  {
         if(bst2.head.get()){
             head.reset(new node{bst2.head, nullptr});
         }      
